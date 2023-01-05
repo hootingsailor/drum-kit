@@ -1,10 +1,15 @@
 for(let i=0; i<document.querySelectorAll(".drum").length; i++){
-    document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
+    document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+        sound(this.innerHTML);
+    });
 }
 
-function handleClick(){
-    let btn = this.innerHTML;
-    switch(btn){
+document.addEventListener("keypress", (e)=>{
+    sound(e.key);
+});
+
+function sound(key){
+    switch(key){
         case "w":
             let crash = new Audio("sounds/crash.mp3");
             crash.play();
